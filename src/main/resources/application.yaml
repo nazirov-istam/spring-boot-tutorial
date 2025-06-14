@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:./db
+    username: sa
+    password: sa
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+    properties:
+      hibernate:
+        format_sql: true
+
+# External Server Api lari uchun config
+comments:
+  url:
+    base: http://localhost:9595/api/comments
+    postComments: ${comments.url.base}/{0}/post
+    saveComments: ${comments.url.base}/saveAll
+
+#Zalanda config
+logging:
+  level:
+    org.zalando.logbook : trace
+    org:
+      springframework:
+        web:
+          client:
+            RestTemplate: trace
+
+# Malum bir API uchun log yozmaslik
+#logbook:
+#    exclude:
+#      - api/posts/comment
+#      - api/upload # Agar malum bir fayl upload qilinsa uni ichidagi hamma body ni logda chiqarib beradi. Bu logika buyicha XATO !
+#      - api/download # Agar malum bir fayl download qilinsa uni ichidagi hamma body ni logda chiqarib beradi. Bu logika buyicha XATO !
